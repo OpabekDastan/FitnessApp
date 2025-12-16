@@ -2,7 +2,7 @@
   <section class="grid" style="gap:20px">
     <div class="card">
       <h2 style="margin:0 0 8px">Welcome 👋</h2>
-      <p class="small">Log your workouts and review details.</p>
+      <p class="small">Quotes from external API</p>
       
       <div v-if="quoteLoading" class="quote-box center" style="padding:1rem; border:1px solid var(--border)">
         <p class="small">Loading daily quote...</p>
