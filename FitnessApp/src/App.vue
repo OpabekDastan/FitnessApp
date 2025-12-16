@@ -1,4 +1,4 @@
-<!-- src/App.vue -->
+
 <template>
   <header class="app">
     <div class="container row" style="justify-content:space-between;padding:24px 24px">
@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import logo from './assets/fitness-logo.png'  // <— твой PNG
+import logo from './assets/fitness-logo.png'  
 </script>
 
 <style scoped>

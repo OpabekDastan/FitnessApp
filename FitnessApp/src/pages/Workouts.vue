@@ -24,13 +24,18 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { useWorkouts } from '../composables/useWorkouts'
+import { storeToRefs } from 'pinia' 
+import { useWorkoutStore } from '../stores/workoutStore' 
 import WorkoutCard from '../components/WorkoutCard.vue'
 
-const { workouts, deleteWorkout } = useWorkouts()
+const store = useWorkoutStore() 
+const { workouts } = storeToRefs(store) 
+const { deleteWorkout } = store 
+
 const q = ref('')
 
 const filtered = computed(() => {
+  
   const term = q.value.trim().toLowerCase()
   if (!term) return workouts.value
   return workouts.value.filter(w =>

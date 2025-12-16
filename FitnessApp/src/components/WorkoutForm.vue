@@ -41,10 +41,12 @@
 
 <script setup>
 import { reactive } from 'vue'
-import { useWorkouts } from '../composables/useWorkouts'
+import { useWorkoutStore } from '../stores/workoutStore' 
 
 const emit = defineEmits(['saved'])
-const { addWorkout } = useWorkouts()
+const { addWorkout } = useWorkoutStore() 
+
+
 
 const form = reactive({
   date: new Date().toISOString().slice(0,10),
@@ -60,11 +62,9 @@ function removeExercise(i){
   form.exercises.splice(i,1)
 }
 function submit(){
+  
   const id = addWorkout(JSON.parse(JSON.stringify(form)))
   emit('saved', id)
-  // reset минимально
-  form.title = ''
-  form.notes = ''
-  form.exercises = [{ name:'', sets:3, reps:10, weight:0 }]
+  
 }
 </script>

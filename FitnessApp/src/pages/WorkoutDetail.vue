@@ -30,9 +30,9 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useWorkouts } from '../composables/useWorkouts'
+import { useWorkoutStore } from '../stores/workoutStore' 
 
-const { getWorkout } = useWorkouts()
+const { getWorkout } = useWorkoutStore() 
 const route = useRoute()
 const workout = ref(null)
 
