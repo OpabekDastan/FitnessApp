@@ -1,6 +1,8 @@
 
 <template>
+
   <header class="app">
+   
     <div class="container row" style="justify-content:space-between;padding:24px 24px">
       <router-link to="/" class="brand">
         <img :src="logo" alt="Fitness Log" class="brand-logo" />
@@ -13,6 +15,7 @@
         <router-link to="/workouts/create" class="nav">Create</router-link>
       </nav>
     </div>
+    
   </header>
 
   <main class="container">
