@@ -21,7 +21,8 @@
 </template>
 
 <script setup>
-import logo from './assets/fitness-logo.png'  
+import logo from './assets/fitness-logo.png' 
+ 
 </script>
 
 <style scoped>

@@ -6,6 +6,7 @@
         <div class="small">{{ workout.date }}</div>
       </div>
       <div class="row" style="gap:8px">
+        <router-link class="btn ghost" :to="{name:'edit-workout', params:{id:workout.id}}">Edit</router-link> 
         <router-link class="btn ghost" :to="{name:'workout-detail', params:{id:workout.id}}">Open</router-link>
         <button class="btn ghost" @click="$emit('delete', workout.id)">Delete</button>
       </div>

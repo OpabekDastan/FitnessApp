@@ -43,13 +43,16 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  
   color: var(--text);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, "Noto Sans";
   line-height: 1.55;
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
+
 
 ::selection {
   background: color-mix(in oklab, var(--accent) 30%, transparent);

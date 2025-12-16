@@ -7,6 +7,9 @@ const routes = [
   
   { path: '/workouts/create', name: 'create-workout', component: () => import('../pages/CreateWorkout.vue') }, 
   
+
+  { path: '/workouts/edit/:id', name: 'edit-workout', component: () => import('../pages/EditWorkout.vue'), props: true }, 
+  
   { path: '/workouts/:id', name: 'workout-detail', component: () => import('../pages/WorkoutDetail.vue'), props: true },
   
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../pages/NotFound.vue') }

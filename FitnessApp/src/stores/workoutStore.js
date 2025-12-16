@@ -35,6 +35,14 @@ export const useWorkoutStore = defineStore('workouts', () => {
   workouts.value.unshift(item) 
   return item.id
 }
+
+  function updateWorkout(updatedWorkout) {
+    const index = workouts.value.findIndex(w => w.id === updatedWorkout.id);
+    if (index !== -1) {
+      
+      workouts.value[index] = updatedWorkout; 
+    }
+  }
   function deleteWorkout(id) {
     const i = workouts.value.findIndex((w) => w.id === id)
     if (i !== -1) workouts.value.splice(i, 1)
@@ -76,6 +84,7 @@ export const useWorkoutStore = defineStore('workouts', () => {
   return {
     workouts,
     totalWorkouts,
+    updateWorkout,
     addWorkout,
     deleteWorkout,
     getWorkout,
