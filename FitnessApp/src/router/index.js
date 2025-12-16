@@ -1,18 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../pages/Home.vue'
-import Workouts from '../pages/Workouts.vue'
-import WorkoutDetail from '../pages/WorkoutDetail.vue'
-import CreateWorkout from '../pages/CreateWorkout.vue' 
 
 const routes = [
-  { path: '/', name: 'home', component: Home },
-  { path: '/workouts', name: 'workouts', component: Workouts },
-  { path: '/workouts/create', name: 'create-workout', component: CreateWorkout }, 
-  { path: '/workouts/:id', name: 'workout-detail', component: WorkoutDetail, props: true },
+  { path: '/', name: 'home', component: () => import('../pages/Home.vue') },
+  
+  { path: '/workouts', name: 'workouts-list', component: () => import('../pages/Workouts.vue') },
+  
+  { path: '/workouts/create', name: 'create-workout', component: () => import('../pages/CreateWorkout.vue') }, 
+  
+  { path: '/workouts/:id', name: 'workout-detail', component: () => import('../pages/WorkoutDetail.vue'), props: true },
+  
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../pages/NotFound.vue') }
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(){ return { top: 0 } }
 })
+
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'workout-detail' && !to.params.id) {
+    return next({ name: 'workouts-list' }) 
+  }
+  next() 
+})
+
+
+export default router
