@@ -1,4 +1,4 @@
-// src/components/__tests__/WorkoutCard.spec.js
+
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import WorkoutCard from '../WorkoutCard.vue'

@@ -19,23 +19,22 @@ const seed = () => [
 const uid = (p = 'w') => `${p}_${Math.random().toString(36).slice(2, 8)}`
 
 export const useWorkoutStore = defineStore('workouts', () => {
-  // STATE: Workouts
+
   const workouts = useLocalStorage('fw_workouts', seed())
 
-  // STATE: API (для цитат)
+
   const quote = ref(null)
   const quoteLoading = ref(false)
   const quoteError = ref(null)
 
-  // GETTERS
   const totalWorkouts = computed(() => workouts.value.length)
 
-  // ACTIONS: Работа с тренировками
-  function addWorkout(w) {
-    const item = { id: uid('w'), ...w }
-    workouts.value.unshift(item)
-    return item.id
-  }
+  function addWorkout(w){
+  const item = { id: uid('w'), ...w }
+
+  workouts.value.unshift(item) 
+  return item.id
+}
   function deleteWorkout(id) {
     const i = workouts.value.findIndex((w) => w.id === id)
     if (i !== -1) workouts.value.splice(i, 1)
@@ -44,13 +43,13 @@ export const useWorkoutStore = defineStore('workouts', () => {
     return workouts.value.find((w) => w.id === id)
   }
 
-  // ACTIONS: API (ZenQuotes)
+
   async function fetchDailyQuote() {
     quoteLoading.value = true
     quoteError.value = null
 
     try {
-      // Используем Advice Slip API
+
       const response = await fetch('https://api.adviceslip.com/advice'); 
       
       if (!response.ok) {
@@ -60,7 +59,7 @@ export const useWorkoutStore = defineStore('workouts', () => {
       const data = await response.json(); 
       const advice = data.slip.advice;
       
-      // Advice Slip API не имеет автора, устанавливаем его вручную
+      
       quote.value = {
         content: advice, 
         author: 'Very clever someone'
@@ -73,7 +72,7 @@ export const useWorkoutStore = defineStore('workouts', () => {
     }
   }
 
-  // ЭКСПОРТ
+
   return {
     workouts,
     totalWorkouts,
