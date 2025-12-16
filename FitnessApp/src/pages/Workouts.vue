@@ -9,14 +9,16 @@
         </div>
       </div>
       <hr />
-      <div class="grid">
+      
+      <TransitionGroup name="list" tag="div" class="grid">
         <WorkoutCard
           v-for="w in filtered"
           :key="w.id"
           :workout="w"
           @delete="deleteWorkout"
         />
-      </div>
+      </TransitionGroup>
+      
       <p v-if="filtered.length===0" class="small">No workouts yet. Click “New” to add one 💪</p>
     </div>
   </section>
@@ -24,18 +26,16 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { storeToRefs } from 'pinia' 
-import { useWorkoutStore } from '../stores/workoutStore' 
+import { storeToRefs } from 'pinia'
+import { useWorkoutStore } from '../stores/workoutStore'
 import WorkoutCard from '../components/WorkoutCard.vue'
 
-const store = useWorkoutStore() 
-const { workouts } = storeToRefs(store) 
-const { deleteWorkout } = store 
-
+const store = useWorkoutStore()
+const { workouts } = storeToRefs(store)
+const { deleteWorkout } = store
 const q = ref('')
 
 const filtered = computed(() => {
-  
   const term = q.value.trim().toLowerCase()
   if (!term) return workouts.value
   return workouts.value.filter(w =>

@@ -1,5 +1,5 @@
 <template>
-  <article class="card">
+  <article class="card" :class="{ 'card-heavy': isHeavy }">
     <div class="row" style="justify-content:space-between">
       <div>
         <h3 style="margin:0">{{ workout.title }}</h3>
@@ -20,5 +20,18 @@
 </template>
 
 <script setup>
-defineProps({ workout: Object })
+import { computed } from 'vue'
+
+const props = defineProps({ workout: Object })
+
+const isHeavy = computed(() => {
+  return props.workout.exercises.some(e => e.weight >= 50)
+})
 </script>
+
+<style scoped>
+.card-heavy {
+  border-color: var(--accent); 
+  box-shadow: 0 0 10px rgba(43, 208, 127, 0.5); 
+}
+</style>
