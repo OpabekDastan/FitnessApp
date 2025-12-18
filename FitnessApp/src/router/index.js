@@ -89,6 +89,13 @@ const routes = [
     props: true,
     meta: { requiresAuth: true }
   },
+  {
+    // НОВЫЙ МАРШРУТ ДЛЯ ТУТОРИАЛОВ
+    path: '/tutorials',
+    name: 'tutorials',
+    component: () => import('../pages/Tutorials.vue'),
+    meta: { requiresAuth: true }
+  },
   { 
     path: '/:pathMatch(.*)*', 
     name: 'NotFound', 
