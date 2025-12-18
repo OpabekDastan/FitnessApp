@@ -5,16 +5,8 @@ import { useLocalStorage } from '../composables/useLocalStorage'
 
 // СЛУЖЕБНЫЕ ФУНКЦИИ
 const seed = () => [
-  {
-    id: 'w_' + Date.now(),
-    date: new Date().toISOString().slice(0, 10),
-    title: 'Push Day',
-    notes: 'Example data. You can delete this.',
-    exercises: [
-      { name: 'Bench Press', sets: 3, reps: 8, weight: 60 },
-      { name: 'Incline DB Press', sets: 3, reps: 10, weight: 22.5 },
-    ],
-  },
+  
+  
 ]
 const uid = (p = 'w') => `${p}_${Math.random().toString(36).slice(2, 8)}`
 

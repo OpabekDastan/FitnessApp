@@ -95,8 +95,17 @@ import logo from './assets/fitness-logo.png'
 import { useAuthStore } from './stores/authStore'
 import { useRouter } from 'vue-router'
 
+
+
 const auth = useAuthStore()
 const router = useRouter()
+
+
+
+
+
+
+
 
 function handleLogout() {
   auth.logout()

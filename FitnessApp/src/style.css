@@ -228,3 +228,36 @@ main { min-height: 80vh }
 .list-leave-active {
   position: absolute;
 }
+
+
+
+@media (min-width: 1400px) { /* Показываем только на широких экранах */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 350px; /* Ширина области с фото */
+    z-index: -1;   /* Уводим на задний план */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25; /* Прозрачность, чтобы не отвлекать от текста */
+    filter: grayscale(40%) blur(1px); /* Небольшой эффект для стиля */
+    pointer-events: none;
+  }
+
+  /* Левая картинка */
+  body::before {
+    left: 0;
+    background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop'); 
+   mask-image: linear-gradient(to right, black 20%, transparent 100%); /* Плавное исчезновение к центру */
+  }
+
+  /* Правая картинка */
+  body::after {
+    right: 0;
+    background-image: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1470&auto=format&fit=crop');
+    mask-image: linear-gradient(to left, black 20%, transparent 100%); /* Плавное исчезновение к центру */
+  }
+}
