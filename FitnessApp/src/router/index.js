@@ -14,12 +14,43 @@ const routes = [
     component: () => import('../pages/Home.vue'),
     meta: { requiresAuth: true } 
   },
-  { 
-    path: '/workouts', 
-    name: 'workouts-list', 
-    component: () => import('../pages/Workouts.vue'),
-    meta: { requiresAuth: true }
+
+
+{
+    path: '/workouts',
+    component: () => import('../pages/Workouts.vue'), 
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: '', 
+        name: 'workouts-list',
+        component: () => import('../pages/Workouts.vue')
+      },
+      {
+        path: 'create', 
+        name: 'create-workout',
+        component: () => import('../pages/CreateWorkout.vue')
+      },
+      {
+        path: 'edit/:id', 
+        name: 'edit-workout',
+        component: () => import('../pages/EditWorkout.vue'),
+        props: true
+      },
+      {
+        path: ':id', 
+        name: 'workout-detail',
+        component: () => import('../pages/WorkoutDetail.vue'),
+        props: true
+      }
+    ]
   },
+
+
+
+
+
+ 
   {
     path: '/workouts/create',
     name: 'create-workout',
