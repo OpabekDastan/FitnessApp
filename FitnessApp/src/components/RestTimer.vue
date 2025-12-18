@@ -61,14 +61,14 @@ function formatTime(seconds) {
 
 function setCustomTime() {
   if (customSeconds.value > 0) {
-    pause() // Останавливаем текущий ход, если он был
+    pause() 
     timeLeft.value = customSeconds.value
   }
 }
 
 function setTime(s) {
-  pause() // Останавливаем текущий ход
-  timeLeft.value = s // Просто обновляем цифры на табло
+  pause() 
+  timeLeft.value = s 
 }
 
 function start() {

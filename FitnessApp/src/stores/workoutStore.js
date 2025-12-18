@@ -1,9 +1,8 @@
-// src/stores/workoutStore.js (Полная исправленная версия с ZenQuotes API)
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useLocalStorage } from '../composables/useLocalStorage'
 
-// СЛУЖЕБНЫЕ ФУНКЦИИ
+
 const seed = () => [
   
   
@@ -49,7 +48,7 @@ export const useWorkoutStore = defineStore('workouts', () => {
     quoteError.value = null
 
     try {
-    // Используем Quotable с фильтром по спорту
+    
     const response = await fetch('https://api.quotable.io/random?tags=sports'); 
     
     if (!response.ok) {
@@ -62,7 +61,7 @@ export const useWorkoutStore = defineStore('workouts', () => {
       author: data.author
     };
   } catch (error) {
-    // Обработка ошибки для UI [cite: 50]
+   
     quoteError.value = 'Не удалось загрузить мотивацию. Но ты всё равно иди тренируйся!'
   } finally {
     quoteLoading.value = false

@@ -35,7 +35,7 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useWorkoutStore } from '../stores/workoutStore' 
-// 1. Импортируем компонент таймера
+
 import RestTimer from '../components/RestTimer.vue' 
 
 const { getWorkout } = useWorkoutStore() 

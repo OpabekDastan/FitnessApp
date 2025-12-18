@@ -72,22 +72,22 @@
 </template>
 
 <script setup>
-import { reactive, watch } from 'vue' // Добавляем watch
+import { reactive, watch } from 'vue' 
 import { useWorkoutStore } from '../stores/workoutStore'
 
-// Добавляем пропс для приема начальных данных (для режима редактирования)
+
 const props = defineProps({
   initialData: {
     type: Object,
-    default: null, // По умолчанию null, если это форма создания
+    default: null, 
   },
 })
 
 const emit = defineEmits(['saved'])
-// Добавляем updateWorkout
+
 const { addWorkout, updateWorkout } = useWorkoutStore()
 
-// Определяем базовое/пустое состояние формы
+
 const baseForm = {
   date: new Date().toISOString().slice(0, 10),
   title: '',
@@ -95,7 +95,7 @@ const baseForm = {
   exercises: [{ name: '', sets: 3, reps: 10, weight: 0 }],
 }
 
-// Устанавливаем реактивное состояние формы: либо данные из пропса, либо базовое состояние
+
 const form = reactive(props.initialData ? JSON.parse(JSON.stringify(props.initialData)) : baseForm)
 
 const errors = reactive({
@@ -129,22 +129,22 @@ function submit() {
   let id
   const dataToSave = JSON.parse(JSON.stringify(form))
 
-  // КЛЮЧЕВАЯ ЛОГИКА: Режим Редактирования (если есть ID)
+  
   if (dataToSave.id) {
-    updateWorkout(dataToSave) // Вызываем действие обновления
+    updateWorkout(dataToSave) 
     id = dataToSave.id
   } else {
-    // Режим Создания
+    
     id = addWorkout(dataToSave)
-    // Сброс формы (только для режима создания)
+   
     Object.assign(form, baseForm)
   }
 
-  // Перенаправляем на страницу деталей
+
   emit('saved', id)
 }
 </script>
 
 <style scoped>
-/* ... (стили остаются прежними) ... */
+
 </style>

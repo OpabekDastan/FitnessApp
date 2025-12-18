@@ -25,7 +25,7 @@ import { useRouter } from 'vue-router'
 import { useWorkoutStore } from '../stores/workoutStore'
 import WorkoutForm from '../components/WorkoutForm.vue'
 
-// Принимаем 'id' из маршрута через props (благодаря props: true в роутере)
+
 const props = defineProps({
     id: String 
 })
@@ -33,15 +33,15 @@ const props = defineProps({
 const router = useRouter()
 const store = useWorkoutStore()
 
-// Вычисляемое свойство для поиска тренировки в Pinia Store
+
 const workout = computed(() => store.getWorkout(props.id))
 
 function goToDetail(id){
-  // После сохранения (обновления) перенаправляем пользователя на страницу деталей
+  
   router.push({ name: 'workout-detail', params: { id } })
 }
 </script>
 
 <style scoped>
-/* Стили не требуются */
+
 </style>

@@ -3,21 +3,12 @@ import { computed, ref } from 'vue'
 import { useLocalStorage } from '../composables/useLocalStorage'
 
 
-
-
-
-
-
-
 export const useAuthStore = defineStore('auth', () => {
 
-    
 
-
-
-  // Список всех зарегистрированных пользователей
+  
   const registeredUsers = useLocalStorage('fw_registered_users', [])
-  // Текущая сессия (кто вошел)
+
   const currentUser = useLocalStorage('fw_current_session', null)
 
   const isAuthenticated = computed(() => !!currentUser.value)
@@ -28,7 +19,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     const newUser = { 
       username, 
-      password, // В реальном приложении здесь должен быть хэш
+      password, 
       favorites: [] 
     }
     registeredUsers.value.push(newUser)
@@ -53,10 +44,10 @@ export const useAuthStore = defineStore('auth', () => {
 
   function updateProfile(data) {
     if (currentUser.value) {
-      // Обновляем в текущей сессии
+      
       currentUser.value = { ...currentUser.value, ...data }
       
-      // Обновляем в общем списке пользователей (чтобы данные сохранились)
+      
       const index = registeredUsers.value.findIndex(u => u.username === currentUser.value.username)
       if (index !== -1) {
         registeredUsers.value[index] = { ...registeredUsers.value[index], ...data }

@@ -71,7 +71,7 @@ function handleSubmit() {
   errorMessage.value = ''
 
   if (isLoginMode.value) {
-    // Логика входа
+    
     const result = auth.login(form.username, form.password)
     if (result.success) {
       router.push('/')
@@ -79,7 +79,7 @@ function handleSubmit() {
       errorMessage.value = result.message
     }
   } else {
-    // Логика регистрации
+    
     const result = auth.register(form.username, form.password)
     if (result.success) {
       alert('Registration successful! Now you can login.')
