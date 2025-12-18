@@ -57,27 +57,24 @@ export const useWorkoutStore = defineStore('workouts', () => {
     quoteError.value = null
 
     try {
-
-      const response = await fetch('https://api.adviceslip.com/advice'); 
-      
-      if (!response.ok) {
-        throw new Error(`API Error: ${response.statusText}`);
-      }
-      
-      const data = await response.json(); 
-      const advice = data.slip.advice;
-      
-      
-      quote.value = {
-        content: advice, 
-        author: 'Very clever someone'
-      };
-    } catch (error) {
-      console.error('Failed to fetch quote:', error)
-      quoteError.value = 'Failed to load quote. Please check your connection.'
-    } finally {
-      quoteLoading.value = false
+    // Используем Quotable с фильтром по спорту
+    const response = await fetch('https://api.quotable.io/random?tags=sports'); 
+    
+    if (!response.ok) {
+      throw new Error(`Ошибка API: ${response.status}`);
     }
+    
+    const data = await response.json(); 
+    quote.value = {
+      content: data.content, 
+      author: data.author
+    };
+  } catch (error) {
+    // Обработка ошибки для UI [cite: 50]
+    quoteError.value = 'Не удалось загрузить мотивацию. Но ты всё равно иди тренируйся!'
+  } finally {
+    quoteLoading.value = false
+  }
   }
 
 

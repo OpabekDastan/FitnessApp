@@ -13,6 +13,7 @@
         <router-link to="/" class="nav">Home</router-link>
         <router-link to="/workouts" class="nav">Workouts</router-link>
         <router-link to="/workouts/create" class="nav">Create</router-link>
+        
       </nav>
     </div>
     
