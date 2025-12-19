@@ -33,6 +33,10 @@
 }
 
 
+
+
+
+
 * { box-sizing: border-box }
 html, body, #app { height: 100% }
 
@@ -87,6 +91,7 @@ a:hover { text-decoration: underline }
   border-radius: 18px;
   padding: 1rem;
   box-shadow: var(--shadow);
+  
 }
 
 hr {
@@ -256,4 +261,10 @@ main { min-height: 80vh }
     background-image: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1470&auto=format&fit=crop');
     mask-image: linear-gradient(to left, black 20%, transparent 100%); /* Плавное исчезновение к центру */
   }
+}
+
+
+.card-heavy {
+  border-color: var(--danger) !important; 
+  background: color-mix(in oklab, var(--danger) 5%, var(--surface)); /* Легкий красный оттенок фона */
 }
