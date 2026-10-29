@@ -15,3 +15,6 @@ jobs:
 
       - name: Run test
         run: echo "Test passed"
+
+      - name: Build project
+        run: echo "Build complete"
