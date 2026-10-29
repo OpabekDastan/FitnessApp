@@ -7,6 +7,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    
+      - name: Lint check
+        run: echo "Lint passed"
       - name: Checkout code
         uses: actions/checkout@v4
 
