@@ -18,3 +18,23 @@ jobs:
 
       - name: Build project
         run: echo "Build complete"
+
+        
+      - name: Check project folder
+        run: |
+          if [ -d "FitnessApp" ]; then
+            echo "Project folder exists"
+          else
+            echo "Project folder is missing"
+            exit 1
+          fi
+
+      
+      - name: Check merge conflicts
+        run: |
+          if grep -RnE '^(<<<<<<< |=======|>>>>>>> )' FitnessApp; then
+            echo "Possible merge conflict markers found"
+            exit 1
+          fi
+          echo "No merge conflict markers found"
+
